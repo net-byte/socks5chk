@@ -53,16 +53,16 @@ def main():
 
     parser = argparse.ArgumentParser(prog=os.path.basename(__file__), 
         description='Test SOCKS5 UDP support by sending DNS request to 8.8.8.8:53 and receive response.')
-    parser.add_argument('--proxy', "-p",  metavar="PROXY", dest='proxy', required=True,
-                       help='IP or domain name of proxy to be tested against UDP support.')
+    parser.add_argument('--host', "-H",  metavar="HOST", dest='host', required=True,
+                       help='Host of proxy to be tested against UDP support.')
     parser.add_argument('--port', "-P",  metavar="PORT", dest='port', type=ip_port, default=1080,
                        help='Port of proxy to be tested against UDP support.')
     parser.add_argument('--user', "-u", metavar="username", dest="user", default=None,
                        help='Specify username to be used for proxy authentication.')
-    parser.add_argument('--pwd', "-k", metavar="password", dest="pwd", default=None,
+    parser.add_argument('--pwd', "-p", metavar="password", dest="pwd", default=None,
                        help='Specify password to be used for proxy authentication.')
     args = parser.parse_args()
-    test_udp(None, args.proxy, args.port, args.user, args.pwd)
+    test_udp(None, args.host, args.port, args.user, args.pwd)
 
 
 if __name__ == "__main__":
